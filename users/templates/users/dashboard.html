@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Hello, {{ user.username | default:"Guest" }}!</h1>
+    <hr>
+    {% if user.is_authenticated %}
+        {% include "registration/_logout.html" %}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'sign_up'%}">Sign up</a>
+    {% endif %}
+
+{% endblock %}
