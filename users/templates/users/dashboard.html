@@ -1,12 +1,149 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <h1>Hello, {{ user.username | default:"Guest" }}!</h1>
-    <hr>
-    {% if user.is_authenticated %}
-        {% include "registration/_logout.html" %}
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'sign_up'%}">Sign up</a>
-    {% endif %}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand">Mi Finca App</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNav" aria-controls="dashboardNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="dashboardNav">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Tus Plantas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Clima</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Calendario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="#">Alertas</a>
+                            </li>
+                            {% include "registration/_logout.html" %}
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'sign_up'%}">Sign up</a>
+                            </li>
+                        {% endif %}
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
+    <main class="container py-4">
+        <h1>Bienvenido, {{ user.username | default:"Guest" }}!</h1>
+        <hr>
+        
+        <div class="row row-cols-1 g-4 justify-content-center">
+            
+            <div class="col-md-8">
+                <section class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">Tus Plantas</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Maíz: en crecimiento (día 25/30)</li>
+                            <li class="list-group-item">Tomate: listo para cosecha 🌾</li>
+                            <li class="list-group-item">Frijoles: recién sembrados 🌱</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-8">
+                <section class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">Clima</h2>
+                        <p class="card-text">
+                            Temperatura actual: **28°C**<br>
+                            Humedad: **62%**<br>
+                            Próximos días: lluvias ligeras y cielo nublado.
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-8">
+                <section class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary mb-3">📅 Calendario de Actividades</h2>
+                        
+                        <div class="calendar small"> <div class="row row-cols-10 g-1 text-center fw-bold">
+                                
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-warning">🌾</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-warning">🌾</span></div>
+
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-warning">🌾</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-warning">🌾</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                <div class="col p-0 m-0"><span class="text-warning">🌾</span></div>
+                                <div class="col p-0 m-0"><span class="text-danger">❌</span></div>
+                                <div class="col p-0 m-0"><span class="text-success">✔</span></div>
+                                
+                            </div>
+                            
+                            <p class="legend text-center text-muted mt-3 mb-0 small">
+                                <span class="text-success">✔</span> = actividad realizada | 
+                                <span class="text-danger">❌</span> = día inactivo | 
+                                <span class="text-warning">🌾</span> = cultivo madurando
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-md-8">
+                <section class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary"> Alertas y Recomendaciones</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-item-danger">
+                                <i class="bi bi-cloud-rain-heavy"></i> Alerta meteorológica: lluvia fuerte prevista en 48 h.
+                            </li>
+                            <li class="list-group-item list-group-item-success">
+                                <i class="bi bi-hand-thumbs-up"></i> Recomendación: aplicar fertilizante NPK al cultivo de maíz esta semana.
+                            </li>
+                            <li class="list-group-item list-group-item-info">
+                                <i class="bi bi-chat-text"></i> Nuevo mensaje técnico: revise drenajes para evitar exceso de agua.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            
+        </div>
+    </main>
+
+    {% include "../_footer.html" %} 
 {% endblock %}

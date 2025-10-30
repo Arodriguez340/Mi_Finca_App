@@ -3,6 +3,9 @@ from django.contrib.auth import login
 from .forms import CustomUserCreationForm
 from django.urls import reverse
 
+
+def landing(request):
+    return render(request, 'users/index.html')
 def dashboard(request):
     return render(request, "users/dashboard.html")
 
