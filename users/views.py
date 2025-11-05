@@ -6,6 +6,7 @@ from django.urls import reverse
 
 def landing(request):
     return render(request, 'users/index.html')
+
 def dashboard(request):
     return render(request, "users/dashboard.html")
 

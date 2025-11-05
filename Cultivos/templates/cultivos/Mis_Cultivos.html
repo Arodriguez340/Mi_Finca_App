@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <header>
+        {% include "_navbar.html" %}    
+    </header>
+
+    <main class="container py-4">
+        <h1>Mis cultivos</h1>
+        <hr>
+        {% if myCultivos %}
+        {% for cultivo in myCultivos %}
+        <div class="row row-cols-1 g-4 justify-content-center">            
+            <div class="col-md-8">
+                <section class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary">{{ cultivo.nombreCultivo }}</h2>
+                        
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Descripcion: {{ cultivo.description }}</li>
+                            <li class="list-group-item">Tipo: {{ cultivo.typeCultivo }}</li> 
+                        </ul>  
+                    </div>
+                </section>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+        {% endif%}
+    </main>
+{% include "../_footer.html" %} 
+{% endblock %}

@@ -2,41 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <span class="navbar-brand">Mi Finca App</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardNav" aria-controls="dashboardNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="dashboardNav">
-                    <ul class="navbar-nav ms-auto">
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Tus Plantas</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Clima</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Calendario</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="#">Alertas</a>
-                            </li>
-                            {% include "registration/_logout.html" %}
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'login' %}">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'sign_up'%}">Sign up</a>
-                            </li>
-                        {% endif %}
-                        
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        {% include "../_navbar.html" %}    
     </header>
 
     <main class="container py-4">

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'Cultivos.apps.CultivosConfig',
     'crispy_forms',
     'crispy_bootstrap5',
 ]

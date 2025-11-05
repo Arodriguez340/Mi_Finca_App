@@ -9,10 +9,10 @@
                 {% csrf_token %}
                 {{ form|crispy }}                
                 <input type="submit" value="Login" class="btn btn-primary mt-3">
-                <input type="hidden" name="next" value="{% url 'dashboard' %}">
+                <input type="hidden" name="next" value="{% url 'users:dashboard' %}">
             </form>
             <br>
-            <p><a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">Back to dashboard</a></p>
+            <p><a href="{% url 'users:landing' %}" class="btn btn-outline-secondary">Back to Landing</a></p>
         </div>
     </div>
 </div>
