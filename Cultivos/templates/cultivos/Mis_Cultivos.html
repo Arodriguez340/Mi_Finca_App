@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+
+{% block title %} Mis cultivos {% endblock %}
+
 {% block content %}
     <header>
         {% include "_navbar.html" %}    
@@ -19,7 +22,11 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Descripcion: {{ cultivo.description }}</li>
                             <li class="list-group-item">Tipo: {{ cultivo.typeCultivo }}</li> 
-                        </ul>  
+                        </ul>
+                        <br>
+                        <p><a href="{% url 'cultivos:edit_cultivo' cultivo.id %}" class="btn btn-info">Editar cultivos</a></p>
+                        <br>
+                        <p><a href="{% url 'cultivos:delete_cultivo' cultivo.id %}" class="btn btn-danger">Eliminar cultivos</a></p>  
                     </div>
                 </section>
             </div>
@@ -27,6 +34,12 @@
         <br>
         {% endfor %}
         {% endif%}
+
+        <p><a href="{% url 'cultivos:create_cultivo' %}" class="btn btn-primary mt-3">Nuevo cultivo</a></p>
+        <p><a href="{% url 'users:dashboard' %}" class="btn btn-secondary mt-3">Regresar al dashboard<a></p>
+        <br>
     </main>
+
 {% include "../_footer.html" %} 
 {% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Editar cultivo {% endblock %}
+
+{% block content %}
+    <header>
+        {% include "_navbar.html" %}    
+    </header>
+
+    <main class="container py-4">
+        <h1>Editar cultivo</h1>
+        <hr>
+        <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post" class="p-4 border rounded shadow-sm">
+                {% csrf_token %}
+                {{ form|crispy }}                
+                <input type="submit" value="Guardar cambios" class="btn btn-success mt-3">
+                <input type="hidden" name="next" value="{% url 'cultivos:mis_cultivos' %}">
+            </form>
+            <br>
+            <p><a href="{% url 'cultivos:mis_cultivos' %}" class="btn btn-secondary">Regresar a mis cultivos</a></p>
+        </div>
+    </div>
+    </main>
+{% include "../_footer.html" %} 
+{% endblock %}

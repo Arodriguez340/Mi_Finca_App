@@ -20,14 +20,14 @@
                         <a class="nav-link" href="#">Alertas</a>
                     </li>
                     <li class="nav-item">
-                        {% include "registration/_logout.html" %}
+                        <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
                     </li>                            
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'users:login' %}">Login</a>
+                        <a class="nav-link" href="#">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-success btn-sm ms-2 text-dark" href="{% url 'users:sign_up'%}">Sign up</a>
+                        <a class="nav-link" href="#">Contact us</a>
                     </li>
                 {% endif %}                        
             </ul>

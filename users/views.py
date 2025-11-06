@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
+from django.contrib import messages
 from .forms import CustomUserCreationForm
 from django.urls import reverse
 
@@ -20,3 +21,8 @@ def sign_up(request):
     else: 
         form = CustomUserCreationForm()
     return render(request, 'registration/sign_up.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    messages.info(request, "You have been successfully logged out.")
+    return(redirect('users:landing'))
